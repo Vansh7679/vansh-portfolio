@@ -8,17 +8,18 @@ const VideoBackground = ({ theme }) => {
   useEffect(() => {
     if (currentVideo !== theme) {
       setIsTransitioning(true);
-      
+
       const timer = setTimeout(() => {
         setCurrentVideo(theme);
         setIsTransitioning(false);
       }, 500);
-      
+
       return () => clearTimeout(timer);
     }
   }, [theme, currentVideo]);
 
-  const videoSrc = theme === 'dark' ? '/moon.mp4' : '/sun.mp4';
+  // ⭐ IMPORTANT: No leading slash for GitHub Pages
+  const videoSrc = theme === 'dark' ? 'videos/moon.mp4' : 'videos/sun.mp4';
 
   return (
     <div className="video-background">

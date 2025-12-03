@@ -132,7 +132,7 @@ const Home = () => {
           <div className="hero-image-section">
             <div className="profile-image-wrapper">
               <img
-                src={isDark ? "/images/profile-dark.jpg" : "/images/profile-light.jpg"}
+                src={isDark ? "images/profile-dark.jpg" : "images/profile-light.jpg"}
                 alt="Vansh Tyagi"
                 className="profile-image"
               />
