@@ -1,0 +1,357 @@
+/* ============================================
+   HOME PAGE - HERO SECTION
+   ============================================ */
+
+.home-page {
+  position: relative;
+  padding: 3rem 0;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .home-page {
+    padding: 6rem 0;
+  }
+}
+
+/* Background gradient blobs */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+}
+
+.gradient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.7;
+  animation: float 20s ease-in-out infinite;
+}
+
+.blob-1 {
+  right: 0;
+  top: 5rem;
+  width: 18rem;
+  height: 18rem;
+  background: rgba(var(--primary), 0.05);
+}
+
+.blob-2 {
+  left: 5rem;
+  bottom: 5rem;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(var(--secondary), 0.1);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+/* Hero Grid Layout */
+.hero-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr 400px;
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-grid {
+    grid-template-columns: 1fr 600px;
+  }
+}
+
+/* Hero Content */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Main Heading Animation */
+.hero-heading-wrapper {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.hero-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-title {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+}
+
+/* Rotating Skills */
+.hero-skills-container {
+  height: 3rem;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out 0.1s forwards;
+}
+
+.hero-skills-wrapper {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-skill {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0;
+  transition: all 0.5s ease;
+  transform: translateY(2rem);
+  opacity: 0;
+}
+
+.hero-skill.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (min-width: 640px) {
+  .hero-skill {
+    font-size: 1.875rem;
+  }
+}
+
+/* Description */
+.hero-description {
+  max-width: 600px;
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  margin: 0;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out 0.2s forwards;
+}
+
+@media (min-width: 768px) {
+  .hero-description {
+    font-size: 1.25rem;
+  }
+}
+
+/* Action Buttons */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out 0.3s forwards;
+}
+
+.hero-btn-animate {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-btn-animate .btn-icon-right {
+  transition: transform 0.3s ease;
+}
+
+.hero-btn-animate:hover .btn-icon-right {
+  transform: translateX(4px);
+}
+
+.btn-icon-left {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.btn-icon-right {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+}
+
+/* Social Links */
+.hero-social {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out 0.4s forwards;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: rgba(var(--muted), 0.5);
+  color: var(--foreground);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.social-link:hover {
+  transform: translateY(-3px) scale(1.1);
+  background: rgba(var(--primary), 0.1);
+  border-color: var(--primary);
+}
+
+.social-link:active {
+  transform: scale(0.9);
+}
+
+.social-icon-svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Profile Image Section */
+.hero-image-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: scaleIn 0.5s ease-out 0.4s forwards;
+}
+
+.profile-image-wrapper {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 28rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Stats Section */
+.hero-stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+.stat-card {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 0.25rem 0;
+}
+
+@media (min-width: 640px) {
+  .stat-value {
+    font-size: 2.5rem;
+  }
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .stat-label {
+    font-size: 0.95rem;
+  }
+}
+
+.stat-divider {
+  width: 1px;
+  height: 3.75rem;
+  background: var(--border);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .hero-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .stat-divider {
+    width: 3.75rem;
+    height: 1px;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    flex: 1;
+    min-width: 150px;
+    justify-content: center;
+  }
+}
+
+/* Parallax effect on scroll (optional enhancement) */
+@media (min-width: 1024px) {
+  .hero-content {
+    will-change: transform;
+  }
+
+  .hero-image-section {
+    will-change: transform;
+  }
+}

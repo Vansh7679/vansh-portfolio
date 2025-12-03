@@ -1,0 +1,440 @@
+/* ============================================
+   TRANSFORMED NAVBAR CSS - MATCHING TARGET DESIGN
+   ============================================ */
+
+/* Import Inter font for variable font weights */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* ============================================
+   ROOT VARIABLES - COLOR SYSTEM
+   ============================================ */
+
+:root {
+  /* Light mode colors (using oklch color space from target) */
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --border: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  
+  /* Navbar specific variables */
+  --navbar-bg-scrolled-light: rgba(255, 255, 255, 0.4);
+  --navbar-bg-top-light: rgba(255, 255, 255, 0.2);
+  --navbar-border-light: rgba(255, 255, 255, 0.2);
+  --navbar-shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode color overrides */
+.dark,
+[data-theme="dark"] {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --border: rgba(255, 255, 255, 0.1);
+  --ring: oklch(0.551 0.027 264.364);
+  
+  /* Navbar specific variables for dark mode */
+  --navbar-bg-scrolled-dark: rgba(33, 37, 65, 0.3);
+  --navbar-bg-top-dark: rgba(33, 37, 65, 0.2);
+  --navbar-border-dark: rgba(255, 255, 255, 0.1);
+  --navbar-shadow-dark: rgba(255, 255, 255, 0.03);
+}
+
+/* ============================================
+   NAVBAR HEADER - FIXED POSITIONING & ANIMATIONS
+   ============================================ */
+
+.navbar-header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 72rem; /* 1152px - max-w-6xl */
+  z-index: 50;
+  border-radius: 0.75rem; /* 12px */
+  padding: 0.75rem 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Navbar visibility animations (hide on scroll down, show on scroll up) */
+.navbar-hidden {
+  transform: translate(-50%, -100px);
+  opacity: 0;
+  transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
+}
+
+.navbar-visible {
+  transform: translateX(-50%);
+  opacity: 1;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s ease-out;
+  animation: navbarSlideIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes navbarSlideIn {
+  from {
+    transform: translate(-50%, -100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+}
+
+/* Scrolled state - enhanced backdrop and shadow - DARKER FOR CONTRAST */
+.navbar-light.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-dark.navbar-scrolled {
+  background-color: rgba(20, 25, 50, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* Top state - subtle backdrop - DARKER FOR CONTRAST */
+.navbar-light.navbar-top {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-dark.navbar-top {
+  background-color: rgba(20, 25, 50, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   3D CARD EFFECT (subtle depth)
+   ============================================ */
+
+.navbar-3d-card {
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+/* ============================================
+   NAVBAR CONTAINER - FLEX LAYOUT
+   ============================================ */
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* ============================================
+   LOGO/BRAND - LEFT ALIGNED - ENHANCED VISIBILITY
+   ============================================ */
+
+.navbar-brand-wrapper {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.navbar-brand {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-light .navbar-brand {
+  color: rgb(20, 20, 30);
+  text-shadow: none;
+}
+
+.navbar-brand:hover {
+  color: rgb(100, 180, 255);
+}
+
+.navbar-light .navbar-brand:hover {
+  color: rgb(53, 60, 154);
+}
+
+.navbar-logo-text {
+  display: inline-block;
+  opacity: 0;
+  animation: logoFadeIn 0.5s ease forwards;
+}
+
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   DESKTOP NAVIGATION - CENTERED
+   ============================================ */
+
+.navbar-menu-desktop {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .navbar-menu-desktop {
+    display: flex;
+  }
+}
+
+/* Item wrapper for staggered animations */
+.navbar-item-wrapper {
+  opacity: 0;
+  animation: itemFadeIn 0.5s ease forwards;
+}
+
+@keyframes itemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigation links with variable font - ENHANCED VISIBILITY */
+.navbar-link {
+  font-family: 'Inter', sans-serif;
+  font-variation-settings: 'wght' 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85); /* Better visibility on dark backgrounds */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: block;
+  position: relative;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Subtle text shadow for depth */
+}
+
+/* Light mode link colors */
+.navbar-light .navbar-link {
+  color: rgba(20, 20, 30, 0.75);
+  text-shadow: none;
+}
+
+.navbar-light .navbar-link:hover {
+  color: rgb(53, 60, 154); /* Primary blue */
+}
+
+/* Dark mode link colors - HIGH CONTRAST */
+.navbar-dark .navbar-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-dark .navbar-link:hover {
+  color: rgb(236, 237, 245); /* Bright white-blue */
+}
+
+/* Hover effects with scale and variable font weight change */
+.navbar-item-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.navbar-item-wrapper:active {
+  transform: scale(0.95);
+}
+
+.navbar-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  font-variation-settings: 'wght' 600;
+}
+
+.navbar-light .navbar-link:hover {
+  background-color: rgba(53, 60, 154, 0.1);
+}
+
+/* Active link styling - HIGHLY VISIBLE */
+.navbar-link-active {
+  color: rgb(100, 180, 255) !important; /* Bright blue for visibility */
+  background-color: rgba(100, 180, 255, 0.2) !important;
+  font-variation-settings: 'wght' 600 !important;
+  text-shadow: 0 0 10px rgba(100, 180, 255, 0.5) !important;
+}
+
+.navbar-light .navbar-link-active {
+  color: rgb(53, 60, 154) !important;
+  background-color: rgba(53, 60, 154, 0.15) !important;
+  text-shadow: none !important;
+}
+
+/* ============================================
+   THEME TOGGLE - RIGHT ALIGNED
+   ============================================ */
+
+.navbar-theme-wrapper {
+  width: 160px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  animation: themeToggleFadeIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes themeToggleFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.theme-toggle {
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  border-radius: 9999px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-light .theme-toggle {
+  color: rgb(20, 20, 30);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  color: rgb(100, 180, 255);
+  background-color: rgba(100, 180, 255, 0.2);
+}
+
+.navbar-light .theme-toggle:hover {
+  color: rgb(53, 60, 154);
+  background-color: rgba(53, 60, 154, 0.15);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .navbar-header {
+    top: 0.5rem;
+    width: 98%;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .navbar-brand-wrapper {
+    width: auto;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+
+  .navbar-theme-wrapper {
+    width: auto;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 1rem;
+  }
+}
+
+/* ============================================
+   SCROLL ANIMATION UTILITIES (from target)
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+[data-scroll] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-scroll].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-scroll-speed="fast"] {
+  transition-duration: 0.4s;
+}
+
+[data-scroll-speed="slow"] {
+  transition-duration: 0.8s;
+}
+
+/* ============================================
+   DARK MODE BODY ENHANCEMENTS (optional global)
+   ============================================ */
+
+.dark body {
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(55, 65, 120, 0.2) 0%, transparent 70%),
+    radial-gradient(circle at 100% 0%, rgba(70, 40, 120, 0.1) 0%, transparent 40%);
+}
+
+/* Variable font utility class */
+.variable-font {
+  font-family: 'Inter', sans-serif;
+  font-variation-settings: 'wght' 400;
+  transition: font-variation-settings 0.3s ease;
+}
+
+.variable-font:hover {
+  font-variation-settings: 'wght' 600;
+}

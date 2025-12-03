@@ -1,0 +1,319 @@
+/* ============================================
+   ABOUT PAGE STYLES
+   ============================================ */
+/* ============================
+   ABOUT IMAGE (Added Styles)
+   ============================ */
+
+.about-image-block {
+  width: 120px;              /* passport-size width */
+  margin-bottom: 1.5rem;
+}
+
+.about-profile-image {
+  width: 120px;              /* fixed passport-size */
+  height: 150px;             /* typical passport ratio */
+  object-fit: cover;
+  border-radius: 10px;       /* slight rounding (not too circular) */
+  border: 2px solid var(--border);
+  display: block;
+}
+
+/* Positioning inside the about card */
+.about-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* image stays left-most */
+}
+
+/* On larger screens, keep it aligned left too */
+@media (min-width: 768px) {
+  .about-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.about-page {
+  padding-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  .about-page {
+    padding-top: 6rem;
+  }
+}
+
+/* About Header */
+.about-header {
+  margin-bottom: 3rem;
+}
+
+.about-subtitle {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .about-subtitle {
+    font-size: 1.125rem;
+  }
+}
+
+/* About Intro Section */
+.about-intro-section {
+  margin-bottom: 4rem;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.about-card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.about-text:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .about-text {
+    font-size: 1.125rem;
+  }
+}
+
+/* Skills Section */
+.skills-section {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+/* Skill Category Tabs */
+.skill-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out 0.2s forwards;
+}
+
+.skill-tab {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.skill-tab:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.skill-tab.active {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Skill Card */
+.skill-card {
+  opacity: 0;
+  animation: scaleIn 0.5s ease-out forwards;
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.skill-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.skill-percentage {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Skill Bar */
+.skill-bar {
+  width: 100%;
+  height: 0.5rem;
+  background: var(--muted);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), oklch(0.25 0.05 265));
+  border-radius: 9999px;
+  transition: width 1s ease-out 0.3s;
+  position: relative;
+  animation: progressGlow 2s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--primary);
+  }
+  50% {
+    box-shadow: 0 0 15px var(--primary);
+  }
+}
+
+.skill-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* Education Section */
+.education-section {
+  margin-top: 4rem;
+}
+
+/* Education Grid */
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out 0.2s forwards;
+}
+
+/* Education Card */
+.education-card {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+  transition: all 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.education-degree {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 0.25rem 0;
+}
+
+@media (min-width: 768px) {
+  .education-degree {
+    font-size: 1.5rem;
+  }
+}
+
+.education-institution {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary);
+  margin: 0;
+}
+
+.education-meta {
+  text-align: right;
+}
+
+.education-year {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin: 0 0 0.25rem 0;
+}
+
+.education-grade {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+}
+
+.education-description {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .education-description {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .education-header {
+    flex-direction: column;
+  }
+
+  .education-meta {
+    text-align: left;
+    width: 100%;
+  }
+}
