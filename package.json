@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://Vansh7679.github.io/vansh-portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
