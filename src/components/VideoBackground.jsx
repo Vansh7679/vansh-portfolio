@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import '../styles/VideoBackground.css';
+import React, { useState, useEffect } from "react";
+import "../styles/VideoBackground.css";
 
 const VideoBackground = ({ theme }) => {
   const [currentVideo, setCurrentVideo] = useState(theme);
@@ -18,8 +18,11 @@ const VideoBackground = ({ theme }) => {
     }
   }, [theme, currentVideo]);
 
-  // ⭐ IMPORTANT: No leading slash for GitHub Pages
-  const videoSrc = theme === 'dark' ? 'videos/moon.mp4' : 'videos/sun.mp4';
+  // ⭐ Correct GitHub Pages paths
+  const videoSrc =
+    theme === "dark"
+      ? `${import.meta.env.BASE_URL}videos/moon.mp4`
+      : `${import.meta.env.BASE_URL}videos/sun.mp4`;
 
   return (
     <div className="video-background">
@@ -29,10 +32,11 @@ const VideoBackground = ({ theme }) => {
         loop
         muted
         playsInline
-        className={`video-bg ${isTransitioning ? 'fade-out' : 'fade-in'}`}
+        className={`video-bg ${isTransitioning ? "fade-out" : "fade-in"}`}
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
+
       <div className="video-overlay"></div>
     </div>
   );

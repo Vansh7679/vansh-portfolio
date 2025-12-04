@@ -48,6 +48,20 @@ const Home = () => {
   }, []);
 
   // ====================================
+  // ✅ Use BASE_URL so asset paths work on GH Pages and locally
+  // ====================================
+  const BASE = import.meta.env.BASE_URL || '/';
+
+  const profileDark = `${BASE}images/profile-dark.jpg`;
+  const profileLight = `${BASE}images/profile-light.jpg`;
+
+  // Optional: fallback if image fails to load
+  const handleImgError = (e) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = `${BASE}images/profile-light.png`;
+  };
+
+  // ====================================
   // SOCIAL LINKS
   // ====================================
   const socialLinks = [
@@ -103,7 +117,7 @@ const Home = () => {
               </Link>
 
               <a 
-                href="/resume.pdf"
+                href={`${BASE}resume.pdf`}
                 download="Vansh_Tyagi_Resume.pdf"
                 className="btn btn-outline btn-lg"
               >
@@ -131,10 +145,14 @@ const Home = () => {
           {/* RIGHT PROFILE IMAGE */}
           <div className="hero-image-section">
             <div className="profile-image-wrapper">
+              {/* key forces React to remount the <img> when theme changes so cached image doesn't stick */}
               <img
-                src={isDark ? "images/profile-dark.jpg" : "images/profile-light.jpg"}
+                key={isDark ? 'profile-dark' : 'profile-light'}
+                src={isDark ? profileDark : profileLight}
                 alt="Vansh Tyagi"
                 className="profile-image"
+                onError={handleImgError}
+                draggable={false}
               />
             </div>
           </div>
