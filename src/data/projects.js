@@ -7,7 +7,7 @@ export const projectsData = [
     technologies: ["React.js", "Spring Boot", "MySQL", "REST API", "Authentication"],
     image: "https://images.unsplash.com/photo-1508780709619-79562169bc64?w=800",
     liveUrl: "",
-    githubUrl: "https://github.com/Vansh7679/bros-ride"
+    githubUrl: "https://github.com/Vansh7679/Bro-s-Ride"
   },
   {
     title: "Army Base Inventory & Fault Tracking System",
@@ -17,7 +17,7 @@ export const projectsData = [
     technologies: ["React.js", "Spring Boot", "SQL", "CRUD Operations"],
     image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=800",
     liveUrl: "",
-    githubUrl: "https://github.com/Vansh7679/army-base-inventory"
+    githubUrl: "https://github.com/Vansh7679/510ArmyBaseWorkshop"
   },
   {
     title: "AI Trip Planner",
