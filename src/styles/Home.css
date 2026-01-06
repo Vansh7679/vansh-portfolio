@@ -5,8 +5,10 @@
 .home-page {
   position: relative;
   padding: 3rem 0;
-  overflow: hidden;
+  overflow-x: hidden;   /* 👈 only X hidden */
+  overflow-y: visible;  /* 👈 allow scroll */
 }
+
 
 @media (min-width: 768px) {
   .home-page {

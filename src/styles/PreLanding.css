@@ -5,10 +5,24 @@
 .prelanding-container {
   position: fixed;
   inset: 0;
-  overflow: hidden;
   z-index: 9999;
   isolation: isolate;
+
+  /* IMPORTANT 👇 */
+  width: 100vw;
+  height: 100vh;
+
+  /* overflow hidden rehne do but mobile ke liye tweak */
+  overflow: hidden;
+
   background: #060814;
+}
+
+/* iOS / Android viewport bug fix */
+@supports (-webkit-touch-callout: none) {
+  .prelanding-container {
+    height: 100dvh;
+  }
 }
 
 /* =====================================================
@@ -55,23 +69,27 @@
 }
 
 /* =====================================================
-   CANVAS
+   CANVAS (🔥 MAIN FIX)
    ===================================================== */
 
 .prelanding-container canvas {
   position: absolute !important;
   inset: 0;
+  width: 100% !important;
+  height: 100% !important;
   z-index: 1;
+
+  /* prevent shrinking */
+  display: block;
 }
 
 /* =====================================================
-   🔥 HERO POSITION (TOP, NOT CENTER)
+   HERO (TOP)
    ===================================================== */
 
-/* CHANGED: center → top */
 .prelanding-center {
   position: absolute;
-  top: 90px;               /* 👈 control vertical position here */
+  top: 90px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
@@ -80,21 +98,27 @@
   align-items: center;
   justify-content: center;
 
-  height: auto;            /* important */
   width: 100%;
+  height: auto;
+}
+
+/* MOBILE: keep it visible */
+@media (max-width: 768px) {
+  .prelanding-center {
+    top: 60px;
+  }
 }
 
 /* =====================================================
-   LAMP + TEXT (UNCHANGED)
+   LAMP + TEXT
    ===================================================== */
 
 .lamp-group {
   position: relative;
-  width: 520px;
+  width: min(520px, 92%);
   text-align: center;
 }
 
-/* Lamp opening line */
 .lamp-line {
   height: 2px;
   width: 0;
@@ -115,7 +139,6 @@
   filter: blur(80px);
   opacity: 0;
 }
-
 
 /* =====================================================
    TEXT
@@ -144,28 +167,15 @@
     0 0 25px rgba(100,180,255,0.4);
 }
 
-.name-hidden {
-  opacity: 0;
-}
-
-.name-show {
-  opacity: 1;
-}
-
-/* =====================================================
-   SUBTITLE
-   ===================================================== */
-
 .prelanding-subtitle {
   margin-top: 0.4rem;
   font-size: 1.15rem;
   color: rgba(255,255,255,0.88);
   letter-spacing: 0.05em;
-  
 }
 
 /* =====================================================
-   SCROLL (UNCHANGED)
+   SCROLL
    ===================================================== */
 
 .scroll-indicator {
@@ -180,15 +190,11 @@
   align-items: center;
   gap: 0.45rem;
   animation: bounce 1s infinite;
-}
-
-.scroll-text {
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  z-index: 10;
 }
 
 /* =====================================================
-   ANIMATIONS (UNCHANGED)
+   ANIMATIONS
    ===================================================== */
 
 @keyframes lampLineOpen {
@@ -211,9 +217,6 @@
   50% { transform: translate(12%, -10%); }
   100% { transform: translate(0,0); }
 }
-/* =====================================
-   LAMP ANIMATION TRIGGER (IMPORTANT)
-   ===================================== */
 
 .lamp-start .lamp-line {
   animation: lampLineOpen 2s ease forwards;
@@ -223,4 +226,3 @@
   animation: lampGlowOpen 1.8s ease forwards;
   animation-delay: 1.6s;
 }
-
