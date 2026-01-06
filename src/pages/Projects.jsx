@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { projectsData } from '../data/projects';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import '../styles/Projects.css';
@@ -7,14 +6,20 @@ import '../styles/Projects.css';
 const Projects = () => {
   const [filter, setFilter] = useState('all');
   const categories = ['all', ...new Set(projectsData.map(p => p.category))];
-  
-  const filteredProjects = filter === 'all' 
-    ? projectsData 
-    : projectsData.filter(p => p.category === filter);
+
+  const filteredProjects =
+    filter === 'all'
+      ? projectsData
+      : projectsData.filter(p => p.category === filter);
+
+ 
+  const GITHUB_REDIRECT_URL =
+    'https://github.com/Vansh7679?tab=repositories';
 
   return (
     <section className="projects-page section section-lg bg-muted">
       <div className="container">
+
         {/* Section Title */}
         <div className="section-title">
           <h2>Featured Projects</h2>
@@ -37,21 +42,24 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="projects-grid">
           {filteredProjects.map((project, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="project-card card"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
+
               {/* Project Image */}
               {project.image && (
                 <div className="project-image-wrapper">
-                  <img 
-                    src={project.image} 
+                  <img
+                    src={project.image}
                     alt={project.title}
                     className="project-image"
                   />
+
                   <div className="project-overlay">
                     <div className="project-links">
+
                       {project.liveUrl && (
                         <a
                           href={project.liveUrl}
@@ -63,6 +71,7 @@ const Projects = () => {
                           <ExternalLink className="link-icon" />
                         </a>
                       )}
+
                       {project.githubUrl && (
                         <a
                           href={project.githubUrl}
@@ -74,6 +83,7 @@ const Projects = () => {
                           <Github className="link-icon" />
                         </a>
                       )}
+
                     </div>
                   </div>
                 </div>
@@ -84,11 +94,14 @@ const Projects = () => {
                 <span className="project-category badge badge-secondary">
                   {project.category}
                 </span>
+
                 <h3 className="card-title">{project.title}</h3>
+
                 <p className="card-description">{project.description}</p>
               </div>
 
               <div className="card-content">
+
                 {/* Technologies */}
                 <div className="project-technologies">
                   {project.technologies.slice(0, 4).map((tech, techIndex) => (
@@ -96,6 +109,7 @@ const Projects = () => {
                       {tech}
                     </span>
                   ))}
+
                   {project.technologies.length > 4 && (
                     <span className="badge badge-outline">
                       +{project.technologies.length - 4}
@@ -118,11 +132,25 @@ const Projects = () => {
 
               {/* Project Footer */}
               <div className="card-footer">
-                <button className="btn btn-primary btn-sm">
+
+                {/* SAME AS NEW */}
+                <button
+                  type="button"
+                  className="btn btn-primary btn-sm"
+                  onClick={() =>
+                    window.open(
+                      GITHUB_REDIRECT_URL,
+                      '_blank',
+                      'noopener,noreferrer'
+                    )
+                  }
+                >
                   View Details
                   <ArrowRight className="btn-icon-right" />
                 </button>
+
                 <div className="footer-spacer"></div>
+
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
@@ -134,6 +162,7 @@ const Projects = () => {
                     <Github className="icon-svg" />
                   </a>
                 )}
+
                 {project.liveUrl && (
                   <a
                     href={project.liveUrl}
@@ -150,20 +179,31 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* No Projects Message */}
+        {/* No Projects Found */}
         {filteredProjects.length === 0 && (
           <div className="no-projects">
             <p>No projects found in this category.</p>
           </div>
         )}
 
-        {/* View All Button */}
+        {/* View All Projects */}
         <div className="view-all-section">
-          <Link to="/projects" className="btn btn-outline btn-lg">
+          <button
+            type="button"
+            className="btn btn-outline btn-lg view-all-btn-animated"
+            onClick={() =>
+              window.open(
+                GITHUB_REDIRECT_URL,
+                '_blank',
+                'noopener,noreferrer'
+              )
+            }
+          >
             View All Projects
-            <ArrowRight className="btn-icon-right" />
-          </Link>
+            <ArrowRight className="btn-icon-right arrow-animate" />
+          </button>
         </div>
+
       </div>
     </section>
   );

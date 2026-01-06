@@ -1,0 +1,226 @@
+/* =====================================================
+   ROOT
+   ===================================================== */
+
+.prelanding-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 9999;
+  isolation: isolate;
+  background: #060814;
+}
+
+/* =====================================================
+   BACKGROUND
+   ===================================================== */
+
+.prelanding-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-layer-1,
+.bg-layer-2,
+.bg-layer-3 {
+  position: absolute;
+  inset: -25%;
+  filter: blur(140px);
+  opacity: 0.35;
+  animation: slowDrift 40s linear infinite;
+}
+
+.bg-layer-1 {
+  background: radial-gradient(circle, rgba(100,180,255,0.45), transparent 60%);
+}
+
+.bg-layer-2 {
+  background: radial-gradient(circle, rgba(155,89,182,0.4), transparent 60%);
+  animation-duration: 55s;
+}
+
+.bg-layer-3 {
+  background: radial-gradient(circle, rgba(46,204,113,0.3), transparent 60%);
+  animation-duration: 70s;
+}
+
+.distortion-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.55) 100%),
+    linear-gradient(135deg, rgba(5,0,15,0.45), rgba(15,0,30,0.45));
+}
+
+/* =====================================================
+   CANVAS
+   ===================================================== */
+
+.prelanding-container canvas {
+  position: absolute !important;
+  inset: 0;
+  z-index: 1;
+}
+
+/* =====================================================
+   🔥 HERO POSITION (TOP, NOT CENTER)
+   ===================================================== */
+
+/* CHANGED: center → top */
+.prelanding-center {
+  position: absolute;
+  top: 90px;               /* 👈 control vertical position here */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: auto;            /* important */
+  width: 100%;
+}
+
+/* =====================================================
+   LAMP + TEXT (UNCHANGED)
+   ===================================================== */
+
+.lamp-group {
+  position: relative;
+  width: 520px;
+  text-align: center;
+}
+
+/* Lamp opening line */
+.lamp-line {
+  height: 2px;
+  width: 0;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(90,190,255,0.9),
+    transparent
+  );
+}
+
+.lamp-soft-glow {
+  width: 120px;
+  height: 60px;
+  margin: -10px auto 0;
+  background: rgba(80,170,220,0.35);
+  filter: blur(80px);
+  opacity: 0;
+}
+
+
+/* =====================================================
+   TEXT
+   ===================================================== */
+
+.prelanding-title {
+  margin-top: 0.1px;
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.lamp-title {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #dbeeff 50%,
+    #9ad4ff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 60px rgba(120,200,255,0.55),
+    0 0 25px rgba(100,180,255,0.4);
+}
+
+.name-hidden {
+  opacity: 0;
+}
+
+.name-show {
+  opacity: 1;
+}
+
+/* =====================================================
+   SUBTITLE
+   ===================================================== */
+
+.prelanding-subtitle {
+  margin-top: 0.4rem;
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.88);
+  letter-spacing: 0.05em;
+  
+}
+
+/* =====================================================
+   SCROLL (UNCHANGED)
+   ===================================================== */
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  color: rgba(255,255,255,0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  animation: bounce 1s infinite;
+}
+
+.scroll-text {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   ANIMATIONS (UNCHANGED)
+   ===================================================== */
+
+@keyframes lampLineOpen {
+  from { width: 0; }
+  to { width: 360px; }
+}
+
+@keyframes lampGlowOpen {
+  from { opacity: 0; width: 120px; }
+  to { opacity: 1; width: 420px; }
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+@keyframes slowDrift {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(12%, -10%); }
+  100% { transform: translate(0,0); }
+}
+/* =====================================
+   LAMP ANIMATION TRIGGER (IMPORTANT)
+   ===================================== */
+
+.lamp-start .lamp-line {
+  animation: lampLineOpen 2s ease forwards;
+}
+
+.lamp-start .lamp-soft-glow {
+  animation: lampGlowOpen 1.8s ease forwards;
+  animation-delay: 1.6s;
+}
+

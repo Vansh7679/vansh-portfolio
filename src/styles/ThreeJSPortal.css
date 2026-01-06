@@ -1,0 +1,178 @@
+/* Portal Container */
+.portal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  background: radial-gradient(circle at center, #0a0015 0%, #05000a 100%);
+  perspective: 1000px;
+}
+
+/* Animations */
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateZ(20px) translate(10px, -10px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateZ(40px) translate(-10px, 10px);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translateZ(20px) translate(10px, 10px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes rotateRing {
+  0% {
+    transform: translate(-50%, -50%) rotateX(60deg) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateX(60deg) rotate(360deg);
+  }
+}
+
+@keyframes floatCrystal {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg) scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes energyOrbit {
+  0% {
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--start-angle))
+      translateX(var(--radius))
+      rotate(calc(-1 * var(--start-angle)));
+    opacity: 0.8;
+  }
+  100% {
+    transform:
+      translate(-50%, -50%)
+      rotate(calc(var(--start-angle) + 360deg))
+      translateX(var(--radius))
+      rotate(calc(-1 * var(--start-angle) - 360deg));
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulseCore {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+    box-shadow:
+      0 0 100px #64b4ff,
+      0 0 150px #9b59b6,
+      0 0 200px #3498db;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.9;
+    box-shadow:
+      0 0 120px #64b4ff,
+      0 0 180px #9b59b6,
+      0 0 240px #3498db;
+  }
+}
+
+/* Effects */
+.cosmic-particle { will-change: transform, opacity; filter: blur(1px); }
+.vortex-ring { will-change: transform; filter: blur(1px); }
+.floating-crystal { will-change: transform, opacity; filter: drop-shadow(0 0 10px currentColor); }
+.energy-particle { will-change: transform; }
+.portal-core { will-change: transform, box-shadow, opacity; filter: blur(2px); }
+.portal-core-inner { will-change: transform; filter: blur(1px); }
+.gradient-layer { will-change: transform; filter: blur(10px); }
+
+/* Performance */
+* { backface-visibility: hidden; }
+
+
+
+/* ======================================================
+   📱 MOBILE RESPONSIVE OPTIMIZATION
+   ====================================================== */
+
+@media (max-width: 900px) {
+
+  .portal-container {
+    perspective: 800px;
+  }
+
+  .portal-core,
+  .portal-core-inner,
+  .vortex-ring,
+  .floating-crystal,
+  .energy-particle {
+    transform: scale(0.85) translateZ(0);
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .portal-container {
+    perspective: 650px;
+  }
+
+  /* 🔹 Slightly shrink whole portal system */
+  .portal-core,
+  .portal-core-inner,
+  .vortex-ring,
+  .floating-crystal,
+  .energy-particle {
+    transform: scale(0.7) translateZ(0);
+  }
+
+  /* 🔹 Reduce glow on mobile (battery + GPU saver) */
+  .portal-core {
+    filter: blur(1px);
+    animation-duration: 6s;
+  }
+
+  /* 🔹 Smooth animations, less load */
+  .cosmic-particle,
+  .energy-particle {
+    animation-duration: 9s;
+  }
+
+  .floating-crystal {
+    animation-duration: 7s;
+  }
+
+  /* 🔹 Rings rotate slightly slower on mobile */
+  .vortex-ring {
+    animation-duration: 14s;
+  }
+}
+
+
+@media (max-width: 420px) {
+
+  .portal-container {
+    perspective: 550px;
+  }
+
+  /* 🔹 Compact */
+  .portal-core,
+  .portal-core-inner,
+  .vortex-ring,
+  .floating-crystal,
+  .energy-particle {
+    transform: scale(0.6);
+  }
+}

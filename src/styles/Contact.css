@@ -274,3 +274,53 @@
     top: 0;
   }
 }
+/* GOOGLE MAP LOCATION CARD */
+.location-card {
+  padding: 0 !important;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  min-height: 220px;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(0.3) contrast(1.1);
+}
+
+.map-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.location-card:hover .map-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.map-info {
+  color: white;
+}
