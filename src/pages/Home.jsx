@@ -102,9 +102,14 @@ const Home = () => {
               </div>
 
               <p className="hero-description">
-                I have completed my B.Tech in Computer Science and Engineering from MIET,
-                 Meerut, affiliated with AKTU, with an 8.0 CGPA and distinction.
-                  I specialize in building full-stack applications using Spring Boot and ReactJS, and I am also AWS Cloud Practitioner certified.
+                I turn ideas into working software.
+
+               A CSE graduate from MIET (8.0 CGPA, Distinction),
+                I craft robust full-stack applications with Java, 
+                Spring Boot, and React.js, from well-structured REST APIs to smooth,
+                 responsive interfaces. AWS Cloud Practitioner certified, 
+                 and always focused on building solutions that are efficient,
+                scalable, and genuinely useful.
               </p>
             </div>
 
