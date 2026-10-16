@@ -102,10 +102,9 @@ const Home = () => {
               </div>
 
               <p className="hero-description">
-                I am currently pursuing my B.Tech in Computer Science and Engineering 
-                from MIET, Meerut (7th Semester, CGPA 7.7). I specialize in building 
-                full-stack applications using Spring Boot and ReactJS, and I am also 
-                AWS Cloud Practitioner certified.
+                I have completed my B.Tech in Computer Science and Engineering from MIET,
+                 Meerut, affiliated with AKTU, with an 8.0 CGPA and distinction.
+                  I specialize in building full-stack applications using Spring Boot and ReactJS, and I am also AWS Cloud Practitioner certified.
               </p>
             </div>
 
@@ -162,13 +161,13 @@ const Home = () => {
         {/* Stats Section */}
         <div className="hero-stats">
           <div className="stat-card">
-            <h3 className="stat-value">7.7</h3>
+            <h3 className="stat-value">8.0</h3>
             <p className="stat-label">CGPA</p>
           </div>
           <div className="stat-divider"></div>
 
           <div className="stat-card">
-            <h3 className="stat-value">6+</h3>
+            <h3 className="stat-value">8+</h3>
             <p className="stat-label">Projects</p>
           </div>
           <div className="stat-divider"></div>

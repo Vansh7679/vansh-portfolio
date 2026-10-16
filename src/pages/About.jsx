@@ -29,17 +29,19 @@ const About = () => {
             <div className="about-image-block">
               <img
                 src={`${import.meta.env.BASE_URL}images/vansh.png`}
-                alt="Vansh Tyagii"
+                alt="Vansh Tyagi"
                 className="about-profile-image"
               />
             </div>
 
             <div className="card-content">
               <p className="about-text">
-                My name is <strong>Vansh Tyagii</strong>. I am in my <strong>7th semester</strong> with a
-                <strong> CGPA of 7.7</strong>, pursuing <strong>B.Tech in CSE</strong> from
-                <strong> MIET College, Meerut</strong>.
-              </p>
+  My name is <strong>Vansh Tyagi</strong>. I have completed my
+  <strong> B.Tech in Computer Science and Engineering (CSE)</strong> from
+  <strong> Meerut Institute of Engineering and Technology (MIET), Meerut</strong>,
+  affiliated with <strong>Dr. A.P.J. Abdul Kalam Technical University (AKTU)</strong>,
+  with an <strong>8.0 CGPA, graduating with distinction</strong>.
+</p>
 
               <p className="about-text">
                 Skilled in <strong>Java, Spring Boot, MySQL, ReactJS</strong> and
